@@ -1,0 +1,51 @@
+/* Bespoke micro-animations and typography helpers */
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes goldPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes shimmerBand {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 6s ease-in-out infinite;
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 3.5s ease-in-out infinite;
+}
+
+/* Luxury text gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #f7ecd5 40%, #d4af37 80%, #b88c28 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-subtle {
+  background: linear-gradient(135deg, #f7ecd5 0%, #c4ab75 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

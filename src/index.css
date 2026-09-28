@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════
+   AL NOBLE — REDESIGNED DESIGN SYSTEM
+   Typography: 3 families (Italiana, Cormorant Garamond, Plus Jakarta Sans)
+   Philosophy: Restraint over abundance. Dark space is luxury.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    /* Consolidated Typography — 3 Roles + 1 Script */
+    --font-display: 'Italiana', Georgia, serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-arabic: 'Amiri', 'Noto Serif Arabic', serif;
+
+    /* Gold Spectrum */
+    --gold: #d4af37;
+    --gold-light: #f0dfa0;
+    --gold-pale: #f7ecd5;
+    --gold-dim: #997b2b;
+    --gold-muted: #a3935f;
+
+    /* Obsidian Spectrum */
+    --bg: #080706;
+    --bg-card: rgba(12, 10, 8, 0.72);
+    --bg-elevated: #0e0c09;
+    --bg-surface: #14110d;
+
+    /* Text Spectrum */
+    --text-primary: #f7ecd5;
+    --text-secondary: #c4b5a0;
+    --text-muted: #8e816e;
+    --text-dim: #6d6253;
+
+    /* Border */
+    --border-subtle: rgba(212, 175, 55, 0.12);
+    --border-medium: rgba(212, 175, 55, 0.25);
+    --border-bright: rgba(212, 175, 55, 0.55);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg);
+  }
+
+  /* ── Typographic Hierarchy ────────────────────────────────────── */
+
+  /* Display: Italiana — used ONLY for hero headlines */
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  /* Serif: Cormorant Garamond — for all subheads, quotes, body serif */
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    font-feature-settings: "liga" 1, "kern" 1, "dlig" 1;
+  }
+
+  /* Sans: Plus Jakarta Sans — for labels, UI, body text */
+  .font-sans, .font-body {
+    font-family: var(--font-sans);
+  }
+
+  /* Arabic Script */
+  .font-arabic {
+    font-family: var(--font-arabic);
+  }
+
+  /* ── Minimal Scrollbar ────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #1e1a15; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMPONENT SURFACES
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Glass Panel — refined, less harsh borders */
+.glass-panel {
+  background: linear-gradient(160deg, rgba(14, 12, 9, 0.65) 0%, rgba(7, 6, 5, 0.82) 100%);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid var(--border-subtle);
+  box-shadow:
+    0 20px 50px -12px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(247, 236, 213, 0.05);
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--border-medium);
+  box-shadow:
+    0 28px 60px -12px rgba(0, 0, 0, 0.9),
+    0 0 30px -8px rgba(212, 175, 55, 0.08),
+    inset 0 1px 0 rgba(247, 236, 213, 0.08);
+}
+
+/* Legacy compatibility */
+.editorial-card {
+  background: linear-gradient(160deg, rgba(14, 12, 9, 0.65) 0%, rgba(7, 6, 5, 0.82) 100%);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid var(--border-subtle);
+  box-shadow:
+    0 20px 50px -12px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(247, 236, 213, 0.05);
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.editorial-card:hover {
+  border-color: var(--border-medium);
+}
+
+/* Atelier Corner Brackets — subtler */
+.atelier-bracket { position: relative; }
+.atelier-bracket::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 10px; height: 10px;
+  border-top: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.atelier-bracket::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 10px; height: 10px;
+  border-bottom: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────── */
+
+/* Primary Gold CTA */
+.btn-gold-couture {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #c9a534 0%, #e8d18a 50%, #b88c28 100%);
+  color: #080706;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px -4px rgba(212, 175, 55, 0.25);
+}
+
+.btn-gold-couture::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.btn-gold-couture:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px -4px rgba(212, 175, 55, 0.4);
+}
+
+.btn-gold-couture:hover::before { left: 140%; }
+.btn-gold-couture:active { transform: translateY(0) scale(0.98); }
+
+/* Outline Button */
+.btn-outline-couture {
+  background: rgba(14, 12, 9, 0.5);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+
+.btn-outline-couture:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+/* ── Text Utilities ─────────────────────────────────────────────── */
+.gold-glow { text-shadow: 0 0 24px rgba(212, 175, 55, 0.35); }
+
+/* ── Label: Luxury Eyebrow Text ─────────────────────────────────── */
+.label-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── Divider Line ───────────────────────────────────────────────── */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+}
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Accessibility ──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
